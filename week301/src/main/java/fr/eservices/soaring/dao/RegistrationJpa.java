@@ -26,7 +26,7 @@ public class RegistrationJpa implements RegistrationDao {
 	public RegistrationJpa() {
 		emf = Persistence.createEntityManagerFactory("myApp");
 		em = emf.createEntityManager();
-		tx = em.getTransaction();		
+		tx = em.getTransaction();
 	}
 
 	public void close() {
@@ -42,8 +42,8 @@ public class RegistrationJpa implements RegistrationDao {
 		ParameterExpression<String> param = cb.parameter(String.class);
 
 		criteria
-		.select( 
-				_pilote = criteria.from(Pilote.class) 
+		.select(
+				_pilote = criteria.from(Pilote.class)
 				)
 		.where(
 				cb.equal(_pilote.get("nom"), param)
@@ -70,13 +70,14 @@ public class RegistrationJpa implements RegistrationDao {
 
 	@Override
 	public List<Pilote> findPilotsBelow(Date currentDate, int age) {
-		TypedQuery<Pilote> q = em.createQuery("SELECT p FROM Pilote p WHERE dateNaissance < :year", Pilote.class);
-		
+		TypedQuery<Pilote> q = em.createQuery("SELECT p FROM Pilote p WHERE dateNaissance < :currentDate AND dateNaissance >= :year", Pilote.class);
+
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(currentDate);
 		cal.add(Calendar.YEAR, -age);
 		Date year = cal.getTime();
-		
+
+		q.setParameter("currentDate",currentDate);
 		q.setParameter("year", year);
 		return q.getResultList();
 	}
