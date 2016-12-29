@@ -4,14 +4,16 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="..." class="...">
-        <!-- collaborators and configuration for this bean go here -->
+    <bean id="application" class="fr.eservices.sample2.appl.Application">
     </bean>
 
-    <bean id="..." class="...">
-        <!-- collaborators and configuration for this bean go here -->
+    <bean id="frenchGreeter" class="fr.eservices.sample2.impl.FrenchGreeter">
     </bean>
 
-    <!-- more bean definitions go here -->
+    <bean id="swingWelcome" class="fr.eservices.sample2.impl.SwingWelcome">
+    </bean>
+
+    <bean id="consolePrinter" class="fr.eservices.sample2.impl.ConsolePrinter">
+    </bean>
 
 </beans>
