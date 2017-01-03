@@ -28,8 +28,8 @@ public class UserJDBCDao implements UserDao {
 			user.setMotDePasse(rs.getString("pwd"));
 			rs.close();	
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			return null;
+		} 
 		return user;
 	}
 

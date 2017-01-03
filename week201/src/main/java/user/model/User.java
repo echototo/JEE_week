@@ -7,7 +7,14 @@ public class User {
 	private String nom;
 	private String motDePasse;
 	
+	public User(){}
 	
+	public User(String email, String lastname, String firstname, String password) {
+		this.mail=email;
+		this.nom=lastname;
+		this.prenom=firstname;
+		this.motDePasse=password;
+	}
 	public String getMail() {
 		return mail;
 	}
